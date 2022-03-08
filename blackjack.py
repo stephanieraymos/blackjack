@@ -1,7 +1,11 @@
 #!/usr/bin/python
 import random
-suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
-ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+suits = ('Hearts', 'Diamonds', 'Clubs', 'Spades')
+ranks = ('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A')
+values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
+          '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10, 'A': 11}
+
+playing = True
 
 
 class Card:
@@ -20,19 +24,20 @@ class Deck:
             for rank in ranks:
                 currentCard = (Card(suit, rank))
                 self.deck.append(currentCard)
-                
+
     def __str__(self):
         deck_comp = ''
         for card in self.deck:
-            deck_comp += '\n' + card.__str__() # the Card class's __str__ method
+            deck_comp += '\n' + card.__str__()  # the Card class's __str__ method
         return 'The deck contains' + deck_comp
 
     def shuffle(self):
         random.shuffle(self.deck)
-    
+
     def deal(self):
         single_card = self.deck.pop()
         return single_card
+
 
 class Hand:
     def __init__(self):
@@ -49,10 +54,10 @@ if __name__ == '__main__':
     cardy = Card("heart", "Ace")
     # print(cardy)
 
-    decky = Deck()
+    test_deck = Deck()
     # print(decky) # prints whole deck
     # print(decky.deck.pop()) # last one
 
     print("dealing card")
-    decky.shuffle()
-    print(decky.deal())
+    test_deck.shuffle()
+    print(test_deck.deal())

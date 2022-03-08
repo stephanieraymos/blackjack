@@ -47,17 +47,20 @@ class Hand:
 
     def add_card(self, card):
         self.cards.append(card)
+        self.value += values[card.rank]
+
+    def adjust_for_ace(self):
+        pass
 
 
 # if this script is being run as terminal command; run what's under this. If you didn't have that, I assume this is a module/library. Not treating like a script.
 if __name__ == '__main__':
-    cardy = Card("heart", "Ace")
-    # print(cardy)
-
     test_deck = Deck()
-    # print(decky) # prints whole deck
-    # print(decky.deck.pop()) # last one
-
-    print("dealing card")
     test_deck.shuffle()
-    print(test_deck.deal())
+    test_player = Hand()
+    test_player.add_card(test_deck.deal())
+    test_player.add_card(test_deck.deal())
+    test_player.value
+
+    for card in test_player.cards:
+        print(card)
